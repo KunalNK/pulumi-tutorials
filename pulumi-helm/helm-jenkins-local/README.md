@@ -11,22 +11,23 @@
 
 1. Create a directory:
 
-    ```
-    mkdir pulumi-helm-jenk && cd pulumi-helm-jenk
-    
-    ```
+```
+mkdir pulumi-helm-jenk && cd pulumi-helm-jenk
+  
+```
 2. Now inside the directory "pulumi-helm-jenk" run the following command to fetch jenkins repo.
 ```
 helm fetch --untar stable/jenkins
 
 ```
-2. Create a new Pulumi project:
+3. Create a new Pulumi project:
 
-    ```
-    pulumi new kubernetes-python --force
-    
-    ```
-3. Next, replace the contents of __main__.py file with the following code.
+```
+pulumi new kubernetes-python --force
+
+```
+4. Next, replace the contents of __main__.py file with the following code.
+
 ```
 from pulumi_kubernetes.helm.v3 import Chart, LocalChartOpts
 
@@ -39,7 +40,7 @@ jenkins = Chart(
 
 ```
 
-4. Run `pulumi up` to preview and deploy changes.  After the preview is shown you will be
+5. Run `pulumi up` to preview and deploy changes.  After the preview is shown you will be
     prompted if you want to continue or not.
 ```
 Previewing update (dev)
@@ -62,7 +63,7 @@ Do you want to perform this update?  [Use arrows to move, enter to select, type 
 
 ```
 
-5. Now, verify the status of pods running inside the kubernetes cluster by running the following command.
+6. Now, verify the status of pods running inside the kubernetes cluster by running the following command.
 ```
 kubectl get po
 
@@ -75,7 +76,8 @@ jenkins-55db64b75d-2rzkh   1/1     Running   0          109s
 
 ```
 
-6. Now, check the service type by running the following command.
+7. Now, check the service type by running the following command.
+
 ```
 kubectl get svc
 
@@ -89,6 +91,6 @@ kubernetes   ClusterIP      172.20.0.1    <none>                                
 
 ```
 
-7. Copy the EXTERNAL-IP of jenkins, paste in the browser to see the output of jenkins server.
+8. Copy the EXTERNAL-IP of jenkins, paste in the browser to see the output of jenkins server.
 
-8. To clean up resources, run `pulumi destroy` and answer the confirmation question at the prompt.
+9. To clean up resources, run `pulumi destroy` and answer the confirmation question at the prompt.

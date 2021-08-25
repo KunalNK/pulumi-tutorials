@@ -10,9 +10,10 @@
 
 1. Create a directory:
 
-    ```
-    mkdir pulumi-helm-jenkins && cd pulumi-helm-jenkins
-    ```
+```
+mkdir pulumi-helm-jenkins && cd pulumi-helm-jenkins
+
+```
 
 2. Create a new Pulumi project:
 

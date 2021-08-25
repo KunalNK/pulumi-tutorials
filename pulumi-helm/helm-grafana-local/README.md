@@ -11,22 +11,22 @@
 
 1. Create a directory:
 
-    ```
-    mkdir pulumi-helm-graf && cd pulumi-helm-graf
+```
+mkdir pulumi-helm-graf && cd pulumi-helm-graf
     
-    ```
+```
 2. Now inside the directory "pulumi-helm-graf" run the following command to fetch grafana repo.
 ```
 helm fetch --untar stable/grafana
 
 ```
-2. Create a new Pulumi project:
+3. Create a new Pulumi project:
 
     ```
     pulumi new kubernetes-python --force
     
     ```
-3. Next, replace the contents of __main__.py file with the following code.
+4. Next, replace the contents of __main__.py file with the following code.
 ```
 from pulumi_kubernetes.helm.v3 import Chart, LocalChartOpts
 
@@ -39,7 +39,7 @@ grafana = Chart(
 
 ```
 
-4. Run `pulumi up` to preview and deploy changes.  After the preview is shown you will be
+5. Run `pulumi up` to preview and deploy changes.  After the preview is shown you will be
     prompted if you want to continue or not.
 ```
 Previewing update (dev)
@@ -61,10 +61,11 @@ Do you want to perform this update?  [Use arrows to move, enter to select, type 
 > yes
   no
   details
-
+  
 ```
 
-5. Now, verify the status of pods running inside the kubernetes cluster by running the following command.
+6. Now, verify the status of pods running inside the kubernetes cluster by running the following command.
+
 ```
 kubectl get po
 
@@ -75,7 +76,7 @@ NAME                       READY   STATUS    RESTARTS   AGE
 grafana-5d79dc5fdb-4gzgp   1/1     Running   0          66s
 
 ```
-6. Now, check the service type, by running the following command.
+7. Now, check the service type, by running the following command.
 ```
 kubectl get svc
 
@@ -87,6 +88,6 @@ grafana      LoadBalancer   172.20.252.185   a0c87dc38c7a1451cb83c67df0f60244-58
 kubernetes   ClusterIP      172.20.0.1       <none>                                                                   443/TCP          29m
 
 ```
-7. Copy the EXTERNAL-IP of grafana, paste in the browser with port no 3000 to see the output of grafana server.
+8. Copy the EXTERNAL-IP of grafana, paste in the browser with port no 3000 to see the output of grafana server.
 
-8. To clean up resources, run `pulumi destroy` and answer the confirmation question at the prompt.
+9. To clean up resources, run `pulumi destroy` and answer the confirmation question at the prompt.
